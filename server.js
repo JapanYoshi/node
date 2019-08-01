@@ -5,6 +5,8 @@ var path = require('path');
 var loginroute = require('./routes/loginroute.js')(app, path);
 var accountroute = require('./routes/accountroute.js')(app, path);
 var bodyParser = require('body-parser');
+var hash = require('./www/hash.js');
+console.log(hash.hashCode("19053"));
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/www"));
@@ -25,9 +27,9 @@ app.post('/api/login', function(req, res) {
     return res.sendStatus(400);
   }
   const verified = {
-    "aoeu@aoeu.aoeu": hashCode("aoeu@aoeu.aoeu||aoeu||"),
-    "ueoa@ueoa.ueoa": hashCode("ueoa@ueoa.ueoa||ueoa||"),
-    "1234@1234.1234": hashCode("1234@1234.1234||1234||")
+    "aoeu@aoeu.aoeu": hash.hashCode("aoeu@aoeu.aoeu||aoeu||"),
+    "ueoa@ueoa.ueoa": hash.hashCode("ueoa@ueoa.ueoa||ueoa||"),
+    "1234@1234.1234": hash.hashCode("1234@1234.1234||1234||")
   };
   var customer = {};
   customer.email = req.body.email;

@@ -1,20 +1,19 @@
-import hashCode from "./hash.js";
+var hash = exports
 
 $(document).ready(function(){
   $("#loginform").submit(function(event){
     event.preventDefault();
-    window.alert("Submit");
     ajaxPost();
   });
   function ajaxPost(){
     var formData = {
       email: $("#email").val(),
-      hash : hashCode($("#email").val() + "||" + $("#password").val() + "||")
+      hash : hash.hashCode($("#email").val() + "||" + $("#password").val() + "||")
     }
     $.ajax({
       type: "POST",
       contentType: "application/json",
-      url: window.location + "api/login",
+      url: (window.location).toString().substring(0, (window.location).toString().indexOf("/", 8)) + "/api/login",
       data: JSON.stringify(formData),
       dataType: "json",
       success: function(customer){
