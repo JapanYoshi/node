@@ -1,3 +1,15 @@
 body {
     font-family: "Segoe UI";
 }
+
+input {
+    width: 320px;    
+}
+
+#loginform.success #postResultDiv {
+    border: 2px solid greenyellow;
+}
+
+#loginform.fail #postResultDiv {
+    border: 2px solid red;
+}

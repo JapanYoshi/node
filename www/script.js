@@ -17,14 +17,17 @@ $(document).ready(function(){
       data: JSON.stringify(formData),
       dataType: "json",
       success: function(customer){
+        var msg = "";
         if (customer.valid) {
           $("#loginform").removeClass("fail");
           $("#loginform").addClass("success");
+          msg = "Welcome back!";
         } else {
           $("#loginform").removeClass("success");
           $("#loginform").addClass("fail");
+          msg = "User credentials do not match.";
         }
-        $("#postResultDiv").html("<p>Post successfully completed</p><p>Email address: " + customer.email + "</p><p>Hash: " + customer.hash + "</p><p>Valid: " + customer.valid + "</p>")
+        $("#postResultDiv").html("<h3>" + msg + "</h3><p>Email address: " + customer.email + "</p><p>Mock hash: " + customer.hash + "</p>")
       },
       error: function(e){
         alert("An error occured while sending a POST request. Details have been logged in the console.");
